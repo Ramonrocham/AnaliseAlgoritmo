@@ -22,8 +22,8 @@ public class AnalisadorDesempenho {
      */
     public long pararContagem() {
         long endTime = System.nanoTime();
-        // Converte nanossegundos para milissegundos
-        return (endTime - this.startTime) / 1_000_000; 
+        // Converte nanossegundos para microssegundos (DIVISÃO POR 1.000)
+        return (endTime - this.startTime) / 1_000; 
     }
 
     // --- Método de Escrita no CSV ---

@@ -104,48 +104,48 @@ public static int[] quickSort(int[] array) {
 private static void quickSortHelper(int[] array, int low, int high) {
     if (low < high) {
         // Encontra o índice do pivô após o particionamento
-        int pi = partition(array, low, high);
+        int pi = separar(array, low, high); // Usa o método de Hoare
 
         // Chama recursivamente para a sub-lista à esquerda do pivô
-        quickSortHelper(array, low, pi - 1);
-
+        quickSortHelper(array, low, pi); // Ajustado para Hoare: usa 'pi'
+        
         // Chama recursivamente para a sub-lista à direita do pivô
         quickSortHelper(array, pi + 1, high);
     }
 }
 
 /**
- * Método de particionamento que coloca o pivô em sua posição correta.
- * Usaremos o último elemento como pivô.
- * @param array O array a ser particionado
- * @param low O índice inicial
- * @param high O índice final (onde o pivô está)
- * @return O índice onde o pivô foi colocado
+ * Método de particionamento (Esquema Hoare).
+ * @param vetor O array a ser particionado
+ * @param inicio O índice inicial
+ * @param fim O índice final
+ * @return O índice que divide a partição (o último elemento <= pivô)
  */
-private static int partition(int[] array, int low, int high) {
-    int pivot = array[high]; // Escolhe o último elemento como pivô
-    int i = (low - 1); // Índice do menor elemento (que indica o ponto de troca)
-
-    // Percorre todos os elementos, comparando-os com o pivô
-    for (int j = low; j < high; j++) {
-        // Se o elemento atual for menor ou igual ao pivô
-        if (array[j] <= pivot) {
-            i++; // Incrementa o índice do menor elemento
-            
-            // Troca array[i] e array[j]
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+private static int separar(int[] vetor, int inicio, int fim) {
+    int pivo = vetor[inicio]; // Pivô é o primeiro elemento
+    int i = inicio + 1; 
+    int f = fim;
+    
+    while (i <= f) {
+        if (vetor[i] <= pivo)
+            i++;
+        else if (pivo < vetor[f])
+            f--;
+        else {
+            // Troca
+            int troca = vetor[i];
+            vetor[i] = vetor[f];
+            vetor[f] = troca;
+            i++;
+            f--;
         }
     }
-
-    // Troca o pivô (array[high]) com o elemento em array[i + 1]
-    // Isso coloca o pivô em sua posição final correta
-    int temp = array[i + 1];
-    array[i + 1] = array[high];
-    array[high] = temp;
-
-    return i + 1; // Retorna o índice do pivô
+    
+    // Posicionamento final do pivô (troca o pivô inicial com o elemento em f)
+    vetor[inicio] = vetor[f];
+    vetor[f] = pivo;
+    
+    return f;
 }
 
 /**
@@ -318,18 +318,45 @@ private static void merge(int[] array, int left, int mid, int right) {
         AnalisadorDesempenho.escreverResultadosCSV("Heap Sort", n, tipoArray, tempoMs);
 
         analisador.iniciarContagem();
-        mergeSort(array);
-        tempoMs = analisador.pararContagem();
-        AnalisadorDesempenho.escreverResultadosCSV("Merge Sort", n, tipoArray, tempoMs);
-
-        analisador.iniciarContagem();
         quickSort(array);
         tempoMs = analisador.pararContagem();
         AnalisadorDesempenho.escreverResultadosCSV("Quick Sort", n, tipoArray, tempoMs);
+
+        analisador.iniciarContagem();
+        mergeSort(array);
+        tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("Merge Sort", n, tipoArray, tempoMs);
     }
 
     public static void main(String[] args) {
-        int n = 10000;
-        
+        int n = 100000;
+        testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
+
+        n = 10000;
+        testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
+
+        n = 1000;
+        testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
+
+        n = 100;
+        testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
+
+        n = 10;
+        testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
     }
 }
