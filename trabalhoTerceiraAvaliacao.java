@@ -84,7 +84,7 @@ public class trabalhoTerceiraAvaliacao {
         return array;
     }
 
-    /**
+/**
  * Implementação do algoritmo Quick Sort
  * @param array Array de inteiros a ser ordenado
  * @return Array ordenado
@@ -294,12 +294,42 @@ private static void merge(int[] array, int left, int mid, int right) {
     }
 }
 
+    public static void testeOrdenacao(int n, int array[], String tipoArray) {
+        AnalisadorDesempenho analisador = new AnalisadorDesempenho();
+
+        analisador.iniciarContagem();
+        insertionSort(array);
+        long tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("insertion Sort", n, tipoArray, tempoMs);
+
+        analisador.iniciarContagem();
+        bubbleSort(array);
+        tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("Bubble Sort", n, tipoArray, tempoMs);
+
+        analisador.iniciarContagem();
+        selectionSort(array);
+        tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("Selection Sort", n, tipoArray, tempoMs);
+
+        analisador.iniciarContagem();
+        heapSort(array);
+        tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("Heap Sort", n, tipoArray, tempoMs);
+
+        analisador.iniciarContagem();
+        mergeSort(array);
+        tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("Merge Sort", n, tipoArray, tempoMs);
+
+        analisador.iniciarContagem();
+        quickSort(array);
+        tempoMs = analisador.pararContagem();
+        AnalisadorDesempenho.escreverResultadosCSV("Quick Sort", n, tipoArray, tempoMs);
+    }
+
     public static void main(String[] args) {
-        int array[] = {5, 3, 8, 4, 2};
-        System.out.print("Array original: ");
-        printArray(array);
-        int[] sortedArray = quickSort(array);
-        System.out.print("Array ordenado: ");
-        printArray(sortedArray);
+        int n = 10000;
+        
     }
 }

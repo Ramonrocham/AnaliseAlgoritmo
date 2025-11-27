@@ -98,7 +98,7 @@ public class GeradorDeArrays {
         // int N = 10000;
         // int[] meuArray = GeradorDeArrays.gerarAleatorio(N);
 
-        int[] teste = gerarQuaseOrdenado(10);
+        int[] teste = gerarAleatorio(100);
         for (int num : teste) {
             System.out.print(num + " ");
         }
