@@ -22,7 +22,7 @@ public class AnalisadorDesempenho {
      */
     public long pararContagem() {
         long endTime = System.nanoTime();
-        // Converte nanossegundos para microssegundos (DIVISÃO POR 1.000)
+        // Converte nanossegundos para milisegundos (DIVISÃO POR 1.000.000)
         return (endTime - this.startTime) / 1_000_000; 
     }
 
