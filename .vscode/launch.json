@@ -10,7 +10,7 @@
             "request": "launch",
             "mainClass": "trabalhoTerceiraAvaliacao",
             "projectName": "analise algoritmo_d148b16e",
-            "vmArgs": "-Xss8m -Xmx6g"
+            "vmArgs": "-Xss64m -Xmx8g"
         },
         {
             "type": "java",
@@ -18,7 +18,7 @@
             "request": "launch",
             "mainClass": "${file}",
             "cwd": "${workspaceFolder}",
-            "vmArgs": "-Xss8m -Xmx6g"
+            "vmArgs": "-Xss64m -Xmx8g"
         }
     ]
 }

@@ -329,34 +329,42 @@ private static void merge(int[] array, int left, int mid, int right) {
     }
 
     public static void main(String[] args) {
-        int n = 100000;
+        int n = 0;
+
+        n = 1000000;
         testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
         testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
-        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aleatorio");
+        testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
+
+        n = 100000;
+        testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aleatorio");
         testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
 
         n = 10000;
         testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
         testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
-        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aleatorio");
         testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
 
         n = 1000;
         testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
         testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
-        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aleatorio");
         testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
 
         n = 100;
         testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
         testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
-        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aleatorio");
         testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
 
         n = 10;
         testeOrdenacao(n, GeradorDeArrays.gerarOrdenado(n), "Ordenado");
         testeOrdenacao(n, GeradorDeArrays.gerarInversamenteOrdenado(n), "Inversamente Ordenado");
-        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aletario");
+        testeOrdenacao(n, GeradorDeArrays.gerarAleatorio(n), "Aleatorio");
         testeOrdenacao(n, GeradorDeArrays.gerarQuaseOrdenado(n), "Quase Ordenado");
     }
 }
